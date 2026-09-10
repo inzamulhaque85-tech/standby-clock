@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-java@v6
         with:
           distribution: temurin
-          java-version: '12'
+          java-version: '11'
 
       - name: Show Java version
         run: java -version
