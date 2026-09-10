@@ -1,52 +1,46 @@
 package com.example.standby_android
 
+import android.app.Activity
+import android.content.pm.ActivityInfo
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.WindowInsets
+import android.view.WindowInsetsController
 import android.view.WindowManager
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import java.text.SimpleDateFormat
-import java.util.*
 
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var clockTextView: TextView
-    private val handler = android.os.Handler(android.os.Looper.getMainLooper())
+class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        window.addFlags(
-            WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON or
-            WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
-            WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
-        )
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
-        window.decorView.systemUiVisibility = (
-            View.SYSTEM_UI_FLAG_FULLSCREEN or
-            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
-            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-        )
-
-        clockTextView = TextView(this).apply {
-            textSize = 60f
-            setTextColor(android.graphics.Color.WHITE)
-            gravity = android.view.Gravity.CENTER
-            setBackgroundColor(android.graphics.Color.BLACK)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+            setShowWhenLocked(true)
+            setTurnScreenOn(true)
         }
-        setContentView(clockTextView)
 
-        startClock()
+        setContentView(R.layout.activity_main)
+        hideSystemUI()
     }
 
-    private fun startClock() {
-        val runnable = object : Runnable {
-            override fun run() {
-                val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
-                clockTextView.text = currentTime
-                handler.postDelayed(this, 1000)
+    private fun hideSystemUI() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.setDecorFitsSystemWindows(false)
+            window.insetsController?.let { controller ->
+                controller.hide(WindowInsets.Type.systemBars())
+                controller.systemBarsBehavior =
+                    WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
             }
+        } else {
+            @Suppress("DEPRECATION")
+            window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            )
         }
-        handler.post(runnable)
     }
 }
