@@ -1,4 +1,4 @@
-package com.example.standbyclock;
+package com.example.standby_android;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
