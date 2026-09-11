@@ -4,9 +4,8 @@
     android:layout_height="match_parent"
     android:background="#000000"
     android:keepScreenOn="true"
-    android:padding="24dp">
+    android:padding="32dp">
 
-    <!-- Container to hold Clock on Left and Info on Right -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,42 +13,42 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!-- Big Digital Clock (Blue Color) -->
+        <!-- Clock with SF Pro Rounded Font -->
         <TextClock
             android:id="@+id/textClock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:format12Hour="h:mm"
             android:format24Hour="HH:mm"
+            android:fontFamily="@font/sf_pro_rounded_bold"
+            android:includeFontPadding="false"
             android:textColor="#2196F3"
-            android:textSize="120sp"
-            android:textStyle="bold"
-            android:includeFontPadding="false" />
+            android:textSize="130sp" />
 
-        <!-- Right Side Info: Date and Temperature -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="28dp"
             android:orientation="vertical">
 
-            <!-- Date (e.g. MON 5) -->
+            <!-- Date -->
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_rounded_bold"
                 android:textColor="#2196F3"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="26sp" />
 
-            <!-- Ambient Temperature (°C) -->
+            <!-- Real-time Live Temperature (°C) -->
             <TextView
-                android:id="@+id/tvTemperature"
+                android:id="@+id/tvTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/sf_pro_rounded_bold"
                 android:textColor="#2196F3"
-                android:textSize="22sp"
+                android:textSize="24sp"
                 android:visibility="gone" />
 
         </LinearLayout>
@@ -57,3 +56,4 @@
     </LinearLayout>
 
 </RelativeLayout>
+
