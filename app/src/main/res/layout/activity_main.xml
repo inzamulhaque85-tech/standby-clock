@@ -1,19 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    android:keepScreenOn="true">
+    android:keepScreenOn="true"
+    android:padding="24dp">
 
-    <TextClock
-        android:id="@+id/textClock"
+    <!-- Container to hold Clock on Left and Info on Right -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:format12Hour="hh:mm:ss a"
-        android:format24Hour="HH:mm:ss"
-        android:textColor="#FF0000"
-        android:textSize="80sp"
-        android:textStyle="bold" />
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <!-- Big Digital Clock (Blue Color) -->
+        <TextClock
+            android:id="@+id/textClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:format12Hour="h:mm"
+            android:format24Hour="HH:mm"
+            android:textColor="#2196F3"
+            android:textSize="120sp"
+            android:textStyle="bold"
+            android:includeFontPadding="false" />
+
+        <!-- Right Side Info: Date and Temperature -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:orientation="vertical">
+
+            <!-- Date (e.g. MON 5) -->
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#2196F3"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <!-- Ambient Temperature (°C) -->
+            <TextView
+                android:id="@+id/tvTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#2196F3"
+                android:textSize="22sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
