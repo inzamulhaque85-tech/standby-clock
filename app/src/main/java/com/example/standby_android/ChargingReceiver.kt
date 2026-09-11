@@ -3,6 +3,8 @@ package com.example.standby_android
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+// MainActivity Java ক্লাসের সঠিক Import যুক্ত করা হয়েছে
+import com.example.standby_android.MainActivity
 
 class ChargingReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
