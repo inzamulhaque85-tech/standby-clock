@@ -23,16 +23,16 @@
             android:fontFamily="@font/sf_compact"
             android:includeFontPadding="false"
             android:textColor="#2196F3"
-            android:textSize="360sp"
+            android:textSize="350sp"
             android:textStyle="bold"
-            android:letterSpacing="-0.12" /> 
+            android:letterSpacing="-0.10" /> 
 
         <!-- Right Side Info Container (Shifted to Top) -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="18dp"
             android:layout_marginStart="12dp"
             android:orientation="vertical">
 
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_compact"
                 android:textColor="#2196F3"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <!-- Temperature -->
