@@ -25,14 +25,14 @@
             android:textColor="#2196F3"
             android:textSize="350sp"
             android:textStyle="bold"
-            android:letterSpacing="-0.10" /> 
+            android:letterSpacing="-0.09" /> 
 
         <!-- Right Side Info Container (Shifted to Top) -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="-1dp"
             android:layout_marginStart="12dp"
             android:orientation="vertical">
 
